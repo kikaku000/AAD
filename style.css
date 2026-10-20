@@ -39,7 +39,7 @@ canvas {
 
 .border-jp-pink { border-color: #f08b93; }
 
-/* 暖紅發光區塊 */
+/* 暖紅發光 */
 .jp-border-box {
   border: 1px solid #f08b93;
   box-shadow: 0 0 15px rgba(240, 139, 147, 0.25), inset 0 0 10px rgba(240, 139, 147, 0.1);
@@ -58,7 +58,7 @@ canvas {
 .jp-corner-bl { bottom: -2px; left: -2px; border-bottom: 3px solid #e06d75; border-left: 3px solid #e06d75; }
 .jp-corner-br { bottom: -2px; right: -2px; border-bottom: 3px solid #e06d75; border-right: 3px solid #e06d75; }
 
-/* 日系按鈕 */
+/* 按鈕 */
 .jp-btn {
   font-family: 'DotGothic16', monospace;
   font-weight: normal !important;
@@ -114,7 +114,7 @@ canvas {
   background-size: 24px 24px;
 }
 
-/* 立繪圖層與立繪本體（預設：強制不發光） */
+/* 立繪圖層） */
 #characterSpriteContainer {
   position: absolute !important;
   inset: 0 !important;
@@ -152,7 +152,7 @@ canvas {
 }
 
 /* ==========================================================================
-   【階段三：小遊戲圓形容器預設樣式】
+   階段三
    ========================================================================== */
 #circleContainerWrapper {
   width: min(80vw, 80vh) !important;
@@ -163,7 +163,7 @@ canvas {
 }
 
 /* ==========================================================================
-   【階段五：結局畫面預設通用樣式】
+   階段五
    ========================================================================== */
 #endingTextContainer {
   width: 100% !important;
@@ -234,7 +234,7 @@ div#endingTextContainer p,
 }
 
 /* ==========================================================================
-   【📱 手機橫向模式 (Landscape Mode) 專屬最高優先權適配】
+   手機橫向模式
    ========================================================================== */
 @media screen and (max-height: 500px) and (orientation: landscape) {
 
@@ -306,7 +306,7 @@ div#endingTextContainer p,
     min-height: auto !important;
   }
 
-  /* 強制覆蓋一般的 endingTextContainer p 設定 */
+  /* 強制覆蓋 endingTextContainer p  */
   body div#endingTextContainer p, 
   body #phaseEnding #endingTextContainer p,
   body .jp-border-box #endingTextContainer p {
