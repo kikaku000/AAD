@@ -241,69 +241,82 @@ canvas {
 }
 
 /* ===================================================
-   【📱 手機橫向模式 (Landscape Mode) 專屬響應式（修正尺寸過小與跑版）】
+   【📱 手機橫向模式 (Landscape Mode) 專屬響應式修正】
    =================================================== */
 @media (max-height: 500px) and (orientation: landscape) {
   
-  /* 1. 放大手機橫向時的小遊戲圓形容器，讓畫面剛好佔滿高度 */
+  /* 1. 放大圓形小遊戲容器，使其適應橫向高度並佔滿主要視覺 */
   #circleContainerWrapper {
-    width: min(65vh, 65vw) !important;
-    max-width: 420px !important;
-    max-height: 420px !important;
+    width: min(78vh, 78vw) !important;
+    max-width: 480px !important;
+    max-height: 480px !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
   }
 
-  /* 2. 調整小遊戲左右按鈕與提示文字的位置，避免超出螢幕 */
+  /* 2. 讓小遊戲底部左右按鈕往上收，避免貼底被遮擋 */
   #phaseMiniGame .flex.justify-between.items-center {
-    padding: 0 10px !important;
-    margin-top: -5px !important;
+    padding: 0 16px !important;
+    margin-top: -10px !important;
+    margin-bottom: 5px !important;
   }
   
   #btnTouchLeft, #btnTouchRight {
-    padding: 8px 16px !important;
-    font-size: 1rem !important;
+    padding: 6px 14px !important;
+    font-size: 0.9rem !important;
   }
 
-  /* 3. 主線對話框與立繪在橫向時的精準適配 */
+  /* 3. 主線對話框與立繪調整 */
   #dialogBox {
-    margin: 0 auto 0.5rem auto !important;
-    padding: 0.5rem 1rem !important;
+    margin: 0 auto 0.4rem auto !important;
+    padding: 0.4rem 0.8rem !important;
   }
 
   #dialogText, .dialogue-text {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
   }
 
   #characterSpriteContainer {
     height: 100% !important;
-    max-height: 100vh !important; /* 滿版高度 */
+    max-height: 100vh !important;
   }
 
   #characterSprite {
-    height: 125% !important;     /* 將高度放大至 125%，讓角色更大 */
-    width: auto !important;      /* 自動等比例調整寬度，不變形 */
-    max-width: none !important;
-    object-position: bottom center !important; /* 確保保持底部對齊 */
+    height: 125% !important;
+    width: auto !important;
+    object-position: bottom center !important;
   }
 
-  /* 4. 階段五結局畫面橫向微調 */
+  /* 4. 階段五結局畫面：縮小行距與間距，防止最後一行掉出畫面 */
   #phaseEnding {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1.rem !important;
+    justify-content: center !important;
+  }
+
+  #phaseEnding .w-full.max-w-2xl {
+    gap: 1rem !important; /* 縮小Ｑ版角色與文字的間距 */
+    margin-top: auto !important;
+    margin-bottom: auto !important;
   }
 
   #endingTextContainer {
-    min-height: 100px !important;
+    min-height: auto !important;
   }
 
-  #endingTextContainer p {
-    font-size: 13px !important;
-    margin-top: 0.3rem !important;
-    margin-bottom: 0.3rem !important;
+  /* 強制縮小階段五橫向時的字體與行距，讓所有文字完整收在畫面內 */
+  div#endingTextContainer p, 
+  #phaseEnding #endingTextContainer p,
+  .jp-border-box #endingTextContainer p {
+    font-size: 11.5px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;
   }
 
   #chibiSprite {
-    max-height: 110px !important;
+    max-height: 85px !important; /* 稍微縮小Ｑ版大頭，騰出空間給文字 */
     width: auto !important;
   }
 }
