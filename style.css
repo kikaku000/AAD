@@ -324,3 +324,31 @@ div#endingTextContainer p,
     font-size: 0.8rem !important;
   }
 }
+
+/* 📱 手機橫向專屬修復：彈性縮放 Q 版容器與文字間距 */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  /* 將 Q版角色的外層容器從 240px 限制為最大 90px 高度 */
+  #phaseEnding .w-60,
+  #phaseEnding div:has(> #chibiSprite) {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  /* 縮小 Q版圖案與文字的間距 (gap) */
+  #phaseEnding .w-full.max-w-2xl {
+    gap: 0.5rem !important;
+  }
+
+  /* 縮小段落間距與字體，確保所有文字包含最後一行完全收在畫面內 */
+  body div#endingTextContainer p, 
+  body #phaseEnding #endingTextContainer p {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+  }
+
+  #endingActions {
+    margin-top: 0.2rem !important;
+  }
+}
