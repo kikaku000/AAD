@@ -47,22 +47,22 @@ const introLines = [
 ];
 
 const scriptPhase2 = [
-  { speaker: "貓屋敷霞", text: "還有好多頁啊......", bgKey: "room", charKey: "protagonist_normal" },
-  { text: "此刻的貓屋敷霞望著天花板，一臉生無可戀的模樣 \n在家等待開學的日子實在難熬，何況他只是為了補那門沒考到試才被當的學分。", bgKey: "room" },
-  { speaker: "貓屋敷霞", text: "好無聊......難道我這幾天要一直這樣嗎？", bgKey: "room", charKey: "protagonist_愁眉" },
+  { speaker: "猫屋敷霞", text: "還有好多頁啊......", bgKey: "room", charKey: "protagonist_normal" },
+  { text: "此刻的猫屋敷霞望著天花板，一臉生無可戀的模樣 \n在家等待開學的日子實在難熬，何況他只是為了補那門沒考到試才被當的學分。", bgKey: "room" },
+  { speaker: "猫屋敷霞", text: "好無聊......難道我這幾天要一直這樣嗎？", bgKey: "room", charKey: "protagonist_愁眉" },
   { speaker: "腦", text: "去看看被理事長賣給遊樂園的動物們吧？\n聽說賣給狂野西境主題區之類的了，你也很想念小灰不是嗎。", bgKey: "room2", charKey: "protagonist_愁眉" },
-  { speaker: "貓屋敷霞", text: "......但是快開學了，而且最近是小紅的忌日耶。這樣顯得我好渣喔。\n在九州發誓過我會好好讀書的。", bgKey: "room", charKey: "protagonist_認真愁" },
+  { speaker: "猫屋敷霞", text: "......但是快開學了，而且最近是小紅的忌日耶。這樣顯得我好渣喔。\n在九州發誓過我會好好讀書的。", bgKey: "room", charKey: "protagonist_認真愁" },
   { speaker: "腦", text: "一天而已，明天加倍努力就好啦，時間還那麼多。\n難道小灰就不重要嗎......", bgKey: "room", charKey: "protagonist_糾結" },
-  { speaker: "貓屋敷霞", text: "可是可是......", bgKey: "room", charKey: "protagonist_超糾結" },
+  { speaker: "猫屋敷霞", text: "可是可是......", bgKey: "room", charKey: "protagonist_超糾結" },
   { speaker: "腦", text: "你  真  的  不  想  去  看  他  們  嗎  ？", bgKey: "room", charKey: "protagonist_normal" },
-  { speaker: "貓屋敷霞", text: "......", bgKey: "room", charKey: "protagonist_超糾結", triggerGameChoice: true }
+  { speaker: "猫屋敷霞", text: "......", bgKey: "room", charKey: "protagonist_超糾結", triggerGameChoice: true }
 ];
 
 const scriptPhase4 = [
-  { speaker: "貓屋敷霞", text: "……算了！我要出門！動物是自由的、我也是自由的———", bgKey: "room", charKey: "protagonist_決心" },
-  { text: "謬論一般的主張。\n但很多時候人總是能這樣輕易說服自己，貓屋敷霞更是一把好手。\n此刻他的思緒早已飄到遙遠的地方。", bgKey: "entrance", charKey: "protagonist_normal" },
-  { speaker: "貓屋敷霞", text: "帽子、圍巾、重要物品放進背包——啊，學生證也帶著吧，也許買吃的會打折。", bgKey: "entrance" },
-  { speaker: "貓屋敷霞", text: "很好、出發吧！", bgKey: "street", charKey: "protagonist_整裝", triggerExitChoice: true }
+  { speaker: "猫屋敷霞", text: "……算了！我要出門！動物是自由的、我也是自由的———", bgKey: "room", charKey: "protagonist_決心" },
+  { text: "謬論一般的主張。\n但很多時候人總是能這樣輕易說服自己，猫屋敷霞更是一把好手。\n此刻他的思緒早已飄到遙遠的地方。", bgKey: "entrance", charKey: "protagonist_normal" },
+  { speaker: "猫屋敷霞", text: "帽子、圍巾、重要物品放進背包——啊，學生證也帶著吧，也許買吃的會打折。", bgKey: "entrance" },
+  { speaker: "猫屋敷霞", text: "很好、出發吧！", bgKey: "street", charKey: "protagonist_整裝", triggerExitChoice: true }
 ];
 
 const endingLines = [
