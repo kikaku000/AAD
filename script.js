@@ -77,7 +77,7 @@ const endingLines = [
 let audioCtx = null;
 let soundEnabled = true;
 
-// 初始化音訊與播放背景音樂 (BGM)
+
 function initAudio() {
   if (!audioCtx) {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -607,7 +607,6 @@ function enterPhase5() {
     if (lineIdx < endingLines.length) {
       const p = document.createElement('p');
 
-      //全部改為純白色、文字置中 (`text-center`)
       if (lineIdx === endingLines.length - 1) {
         p.className = "my-3 text-white font-bold text-sm md:text-base tracking-widest dialogue-text text-center";
       } else {
