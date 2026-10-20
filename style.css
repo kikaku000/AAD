@@ -276,12 +276,14 @@ canvas {
 
   #characterSpriteContainer {
     height: 100% !important;
-    max-height: 85vh !important;
+    max-height: 100vh !important; /* 滿版高度 */
   }
 
   #characterSprite {
-    height: 100% !important;
-    object-fit: cover !important;
+    height: 125% !important;     /* 將高度放大至 125%，讓角色更大 */
+    width: auto !important;      /* 自動等比例調整寬度，不變形 */
+    max-width: none !important;
+    object-position: bottom center !important; /* 確保保持底部對齊 */
   }
 
   /* 4. 階段五結局畫面橫向微調 */
