@@ -174,8 +174,6 @@ function initStoryPage() {
   renderDialog();
 }
 
-
-
 function renderDialog() {
   const item = currentScript[scriptIndex];
   const speakerName = document.getElementById('speakerName');
@@ -573,7 +571,16 @@ function endMiniGameAndReturn() {
   const phaseVN = document.getElementById('phaseVN');
   phaseVN.classList.remove('hidden');
   phaseVN.classList.add('flex');
+  
+  // 修正：補上切換至第四階段的腳本與渲染
   startPhase4();
+}
+
+// 修正：新增遺漏的 startPhase4 函數
+function startPhase4() {
+  currentScript = scriptPhase4;
+  scriptIndex = 0;
+  renderDialog();
 }
 
 /* ==========================================================================
