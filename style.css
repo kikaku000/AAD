@@ -240,46 +240,69 @@ canvas {
   image-rendering: crisp-edges;
 }
 
-/* ==========================================================================
-   【手機橫向模式（Landscape）防跑版與尺寸適配】
-   ========================================================================== */
-@media screen and (max-height: 600px) and (orientation: landscape) {
+/* ===================================================
+   【📱 手機橫向模式 (Landscape Mode) 專屬響應式（修正尺寸過小與跑版）】
+   =================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
   
-  /* 1. 縮小整體遊戲容器，避免超出高度 */
-  #gameContainer {
-    height: 100vh !important;
-    overflow-y: auto !important;
-  }
-
-  /* 2. 調整小遊戲的圓形容器大小，使其在橫向時不會過大而壓擠按鈕 */
+  /* 1. 放大手機橫向時的小遊戲圓形容器，讓畫面剛好佔滿高度 */
   #circleContainerWrapper {
-    transform: scale(0.7) !important;
-    margin-top: -10px !important;
-    margin-bottom: -10px !important;
+    width: min(65vh, 65vw) !important;
+    max-width: 420px !important;
+    max-height: 420px !important;
   }
 
-  /* 3. 調整小遊戲底部操控列，確保不跑版、緊貼底部 */
-  #phaseMiniGame .flex.justify-between.items-center.px-4 {
-    position: relative !important;
-    bottom: 5px !important;
-    width: 100% !important;
-    padding: 0 20px !important;
+  /* 2. 調整小遊戲左右按鈕與提示文字的位置，避免超出螢幕 */
+  #phaseMiniGame .flex.justify-between.items-center {
+    padding: 0 10px !important;
+    margin-top: -5px !important;
   }
   
-  /* 4. 縮小手機橫向時的對話框高度與文字間距，避免擋住立繪 */
+  #btnTouchLeft, #btnTouchRight {
+    padding: 8px 16px !important;
+    font-size: 1rem !important;
+  }
+
+  /* 3. 主線對話框與立繪在橫向時的精準適配 */
   #dialogBox {
-    padding: 10px 16px !important;
-  }
-  
-  #dialogBox .mt-2 {
-    margin-top: 4px !important;
-    min-h-[45px] !important;
+    margin: 0 auto 0.5rem auto !important;
+    padding: 0.5rem 1rem !important;
   }
 
-  /* 5. 調整立繪尺寸，避免在橫向時過大 */
-  #characterSpriteContainer img {
-    max-height: 75vh !important;
-    object-fit: contain !important;
+  #dialogText, .dialogue-text {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  #characterSpriteContainer {
+    height: 100% !important;
+    max-height: 85vh !important;
+  }
+
+  #characterSprite {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 4. 階段五結局畫面橫向微調 */
+  #phaseEnding {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  #endingTextContainer {
+    min-height: 100px !important;
+  }
+
+  #endingTextContainer p {
+    font-size: 13px !important;
+    margin-top: 0.3rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  #chibiSprite {
+    max-height: 110px !important;
+    width: auto !important;
   }
 }
 
