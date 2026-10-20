@@ -20,9 +20,9 @@ const ASSETS = {
   },
   player: "https://images.plurk.com/46EowJmJTngIV1nr967cOe.png ",
   pixelAnimals: [
+    "https://images.plurk.com/4YdjWh97UBstE9gFK74Wu4.png",
     "https://images.plurk.com/1favROXJI5vJN7UcO2Be2N.png",
-    "https://images.plurk.com/1xnVBjDS22PA8X5jVSZhGM.png",
-    "https://images.plurk.com/6K6fGVG69umi0swT9B9xPU.png"
+    "https://images.plurk.com/1xnVBjDS22PA8X5jVSZhGM.png"
     
   ]
 };
@@ -50,7 +50,7 @@ const scriptPhase2 = [
   { speaker: "貓屋敷霞", text: "還有好多頁啊......", bgKey: "room", charKey: "protagonist_normal" },
   { text: "此刻的貓屋敷霞望著天花板，一臉生無可戀的模樣 \n在家等待開學的日子實在難熬，何況他只是為了補那門沒考到試才被當的學分。", bgKey: "room" },
   { speaker: "貓屋敷霞", text: "好無聊......難道我這幾天要一直這樣嗎？", bgKey: "room", charKey: "protagonist_愁眉" },
-  { speaker: "腦", text: "去看看被理事長賣給遊樂園的動物們吧？聽說賣給狂野西境主題區之類的了，你也很想念小灰不是嗎。", bgKey: "room2", charKey: "protagonist_愁眉" },
+  { speaker: "腦", text: "去看看被理事長賣給遊樂園的動物們吧？\n聽說賣給狂野西境主題區之類的了，你也很想念小灰不是嗎。", bgKey: "room2", charKey: "protagonist_愁眉" },
   { speaker: "貓屋敷霞", text: "......但是快開學了，而且最近是小紅的忌日耶。這樣顯得我好渣喔。\n在九州發誓過我會好好讀書的。", bgKey: "room", charKey: "protagonist_認真愁" },
   { speaker: "腦", text: "一天而已，明天加倍努力就好啦，時間還那麼多。\n難道小灰就不重要嗎......", bgKey: "room", charKey: "protagonist_糾結" },
   { speaker: "貓屋敷霞", text: "可是可是......", bgKey: "room", charKey: "protagonist_超糾結" },
