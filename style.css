@@ -1,0 +1,308 @@
+/*點陣字型色系定義 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: inherit;
+  font-weight: normal !important; /* 全域強制標準字重 */
+}
+
+body {
+  font-family: 'DotGothic16', 'Courier New', Courier, monospace;
+  background-color: #120e10;
+  color: #fcd3c1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  font-weight: normal !important;
+}
+
+/* 小遊戲 Canvas 點陣圖形不模糊處理 */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 色系類別  */
+.text-jp-pink { color: #f08b93; }
+.text-jp-peach { color: #e06d75; }
+.text-jp-lightpink { color: #f2b6a0; }
+.text-jp-gold { color: #f4c095; }
+
+.bg-jp-softbg { background-color: #1a1215; }
+.bg-jp-peach { background-color: #e06d75; }
+.bg-jp-boxbg { background-color: rgba(26, 18, 21, 0.94); }
+
+.border-jp-pink { border-color: #f08b93; }
+
+/* 暖紅發光 */
+.jp-border-box {
+  border: 1px solid #f08b93;
+  box-shadow: 0 0 15px rgba(240, 139, 147, 0.25), inset 0 0 10px rgba(240, 139, 147, 0.1);
+  position: relative;
+}
+
+/* 四角折角裝飾 */
+.jp-corner-tl, .jp-corner-tr, .jp-corner-bl, .jp-corner-br {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+}
+.jp-corner-tl { top: -2px; left: -2px; border-top: 3px solid #e06d75; border-left: 3px solid #e06d75; }
+.jp-corner-tr { top: -2px; right: -2px; border-top: 3px solid #e06d75; border-right: 3px solid #e06d75; }
+.jp-corner-bl { bottom: -2px; left: -2px; border-bottom: 3px solid #e06d75; border-left: 3px solid #e06d75; }
+.jp-corner-br { bottom: -2px; right: -2px; border-bottom: 3px solid #e06d75; border-right: 3px solid #e06d75; }
+
+/* 暖粉 Hover 按鈕 */
+.jp-btn {
+  font-family: 'DotGothic16', monospace;
+  font-weight: normal !important;
+  background: linear-gradient(135deg, rgba(224, 109, 117, 0.2) 0%, rgba(240, 139, 147, 0.25) 100%);
+  border: 1.5px solid #f08b93;
+  color: #f2b6a0;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  border-radius: 10px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.jp-btn:hover {
+  background: linear-gradient(135deg, #e06d75 0%, #f08b93 100%);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(240, 139, 147, 0.6);
+  transform: translateY(-2px);
+}
+.jp-btn:active {
+  transform: translateY(0);
+}
+
+/* 受傷震動效果 */
+.shake-animation {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* 游標閃爍效果 */
+.cursor-blink::after {
+  content: '▲';
+  display: inline-block;
+  margin-left: 6px;
+  color: #f08b93;
+  font-size: 0.8em;
+  animation: blink 0.8s infinite alternate;
+}
+@keyframes blink {
+  0% { opacity: 0.2; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(3px); }
+}
+
+/* 背景圖紋 */
+.bg-grid {
+  background-image: radial-gradient(rgba(240, 139, 147, 0.1) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+#characterSpriteContainer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+  overflow: hidden !important;
+}
+
+#characterSprite {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;        /* 像背景圖一樣滿版覆蓋 */
+  object-position: center !important;  /* 保持中央對齊 */
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* 底部對話框（確保浮在立繪圖層上方） */
+#dialogBox {
+  max-width: 820px !important;
+  width: 88% !important;
+  margin: auto auto 1rem auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+  flex-shrink: 0 !important;
+}
+/* ===================================================
+   【小遊戲完美正圓形邊框樣式（放大版）】
+   =================================================== */
+
+#circleContainerWrapper {
+  width: min(80vw, 80vh) !important; /* 放大比例 */
+  max-width: 1000x !important;       /* 加大尺寸上限 */
+  max-height: 1000px !important;
+  aspect-ratio: 1 / 1 !important;    /* 確保 1:1 絕對正圓 */
+  margin: auto !important;
+}
+
+/* 手機橫向模式 (Landscape Mode) 自動縮放 */
+@media (max-height: 500px) and (orientation: landscape) {
+  #circleContainerWrapper {
+    width: min(70vw, 70vh) !important;
+    max-width: 360px !important;
+    max-height: 360px !important;
+  }
+}
+
+/* ===================================================
+   【結局畫面 (Phase 5) 齊左樣式】
+   =================================================== */
+
+#endingTextContainer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+#endingTextContainer p,
+#endingTextContainer .dialogue-text {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+  font-size: 0.8rem !important;
+  line-height: 1.0 !important;
+  font-weight: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+}
+
+#endingActions {
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.ending-link {
+  font-family: 'DotGothic16', monospace;
+  font-size: 0.8rem !important;
+  font-weight: normal !important;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  cursor: pointer;
+}
+
+.ending-link:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.pixel-avatar {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  vertical-align: middle;
+}
+
+.arrow-slide {
+  animation: slideRight 1.2s infinite ease-in-out;
+}
+
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+#chibiSprite {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ===================================================
+   【📱 手機橫向模式 (Landscape Mode) 專屬響應式】
+   =================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  #dialogBox {
+    margin: 0 auto 0.5rem auto !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  #dialogText, .dialogue-text {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  #characterSpriteContainer {
+    height: 100% !important;
+    max-height: 60vh !important;
+  }
+
+  #characterSprite {
+    height: 110% !important;
+  }
+
+  #phaseEnding {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  #endingTextContainer {
+    min-height: 120px !important;
+  }
+
+  #endingTextContainer p {
+    font-size: 12px !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  #chibiSprite {
+    max-height: 130px !important;
+    width: auto !important;
+  }
+}
+
+
+div#endingTextContainer p, 
+#phaseEnding #endingTextContainer p,
+.jp-border-box #endingTextContainer p {
+  text-align: center !important;
+  color: #ffffff !important;
+  display: block !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+  line-height: 1.0 !important;
+}
+
+
+#characterSprite {
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+  drop-shadow: none !important;
+}

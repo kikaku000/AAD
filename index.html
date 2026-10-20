@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前言</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 點陣字體 DotGothic16 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <!-- 自訂 CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="w-screen h-screen flex flex-col justify-center items-center bg-black text-gray-100 select-none overflow-hidden">
+
+  <!-- 階段一：黑底白字前言說明區 (已放寬寬度，讓 2 行英文平整伸展) -->
+  <div class="intro-container w-full max-w-4xl px-6 text-center flex flex-col items-center">
+    <div id="introText" class="intro-text text-sm md:text-base leading-relaxed text-gray-200 tracking-wider min-h-[180px] flex flex-col items-center justify-center font-light w-full">
+      <!-- 打字效果填入區 -->
+    </div>
+
+    <button id="introNextBtn" onclick="advanceIntro()" class="jp-btn mt-8 px-8 py-3 rounded-full text-jp-lightpink opacity-0 transition-opacity duration-500 flex items-center gap-2">
+      <span>下一頁PPT</span>
+    
+    </button>
+  </div>
+
+  <!-- JS 腳本 -->
+  <script src="script.js"></script>
+  <script>
+    window.onload = function() {
+      initIntroPage();
+    };
+  </script>
+</body>
+</html>
