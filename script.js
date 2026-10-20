@@ -4,7 +4,7 @@
 const ASSETS = {
   backgrounds: {
     room: "https://images.plurk.com/3FkvQr4fKOmNlcAXHB6pVC.png ",
-    room2: "https://images.plurk.com/3Ef8rTQgXwtXJCQHI0cwW5.png ",
+    room2: "https://images.plurk.com/caeqZNEreoCTIHt6h0q9.png ",
     entrance: "https://images.plurk.com/2Ty9BELXv58im9Q36UThsk.png",
     street: "https://images.plurk.com/4Q6lweD2QSmqzPdFCJXx26.png",
     ending: "https://images.plurk.com/4OsqoJaDhmPlQb6A6vn9kO.png  "
@@ -92,7 +92,7 @@ function initAudio() {
     bgm.volume = 0.18;
     if (bgm.paused) {
       bgm.play().catch(e => {
-        console.log("等待玩家互動解鎖音訊");
+        console.log("");
       });
     }
   }
@@ -174,15 +174,7 @@ function initStoryPage() {
   renderDialog();
 }
 
-function startPhase4() {
-  currentScript = scriptPhase4;
-  scriptIndex = 0;
-  const sceneTitle = document.getElementById('sceneTitle');
-  const chapterBadge = document.getElementById('chapterBadge');
-  if (sceneTitle) sceneTitle.innerText = "出門前夕 · 玄關";
-  if (chapterBadge) chapterBadge.innerText = "CHAPTER 02";
-  renderDialog();
-}
+
 
 function renderDialog() {
   const item = currentScript[scriptIndex];
@@ -307,7 +299,7 @@ function typeText(element, text, speed = 35, callback = null) {
 }
 
 /* ==========================================================================
-   階段三：小遊戲 Canvas Engine
+   階段三Canvas Engine
    ========================================================================== */
 let canvas, ctx;
 let gameLoopReq = null;
@@ -585,7 +577,7 @@ function endMiniGameAndReturn() {
 }
 
 /* ==========================================================================
-   階段五：懸念結局邏輯（打字機效果 + 純白置中版）
+   階段五
    ========================================================================== */
 function enterPhase5() {
   playSuspenseSound();
@@ -608,7 +600,7 @@ function enterPhase5() {
     if (lineIdx < endingLines.length) {
       const p = document.createElement('p');
 
-      // 🌟 全部改為純白色、文字置中 (`text-center`)
+      //全部改為純白色、文字置中 (`text-center`)
       if (lineIdx === endingLines.length - 1) {
         p.className = "my-3 text-white font-bold text-sm md:text-base tracking-widest dialogue-text text-center";
       } else {
