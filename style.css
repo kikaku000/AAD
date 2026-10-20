@@ -1,11 +1,13 @@
-/*點陣字型色系定義 */
+/* ==========================================================================
+   【點陣字型與全域基礎定義】
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   user-select: none;
   font-family: inherit;
-  font-weight: normal !important; /* 全域強制標準字重 */
+  font-weight: normal !important;
 }
 
 body {
@@ -20,13 +22,12 @@ body {
   font-weight: normal !important;
 }
 
-/* 小遊戲 Canvas 點陣圖形不模糊處理 */
 canvas {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
-/* 色系類別  */
+/* 色系類別 */
 .text-jp-pink { color: #f08b93; }
 .text-jp-peach { color: #e06d75; }
 .text-jp-lightpink { color: #f2b6a0; }
@@ -38,7 +39,7 @@ canvas {
 
 .border-jp-pink { border-color: #f08b93; }
 
-/* 暖紅發光 */
+/* 暖紅發光區塊 */
 .jp-border-box {
   border: 1px solid #f08b93;
   box-shadow: 0 0 15px rgba(240, 139, 147, 0.25), inset 0 0 10px rgba(240, 139, 147, 0.1);
@@ -57,7 +58,7 @@ canvas {
 .jp-corner-bl { bottom: -2px; left: -2px; border-bottom: 3px solid #e06d75; border-left: 3px solid #e06d75; }
 .jp-corner-br { bottom: -2px; right: -2px; border-bottom: 3px solid #e06d75; border-right: 3px solid #e06d75; }
 
-/* 暖粉 Hover 按鈕 */
+/* 日系按鈕 */
 .jp-btn {
   font-family: 'DotGothic16', monospace;
   font-weight: normal !important;
@@ -81,7 +82,7 @@ canvas {
   transform: translateY(0);
 }
 
-/* 受傷震動效果 */
+/* 受傷震動動畫 */
 .shake-animation {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
@@ -93,7 +94,7 @@ canvas {
   40%, 60% { transform: translate3d(6px, 0, 0); }
 }
 
-/* 游標閃爍效果 */
+/* 游標閃爍 */
 .cursor-blink::after {
   content: '▲';
   display: inline-block;
@@ -107,12 +108,13 @@ canvas {
   100% { opacity: 1; transform: translateY(3px); }
 }
 
-/* 背景圖紋 */
+/* 背景網格圖紋 */
 .bg-grid {
   background-image: radial-gradient(rgba(240, 139, 147, 0.1) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
+/* 立繪圖層與立繪本體（預設：強制不發光） */
 #characterSpriteContainer {
   position: absolute !important;
   inset: 0 !important;
@@ -120,22 +122,26 @@ canvas {
   height: 100vh !important;
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
+  align-items: flex-end !important;
   pointer-events: none !important;
   z-index: 5 !important;
   overflow: hidden !important;
 }
 
 #characterSprite {
-  width: 100% !important;
+  width: auto !important;
   height: 100% !important;
-  object-fit: cover !important;        /* 像背景圖一樣滿版覆蓋 */
-  object-position: center !important;  /* 保持中央對齊 */
   max-width: none !important;
   max-height: none !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+  drop-shadow: none !important;
 }
 
-/* 底部對話框（確保浮在立繪圖層上方） */
+/* 底部對話框 */
 #dialogBox {
   max-width: 820px !important;
   width: 88% !important;
@@ -144,31 +150,21 @@ canvas {
   z-index: 10 !important;
   flex-shrink: 0 !important;
 }
-/* ===================================================
-   【小遊戲完美正圓形邊框樣式（放大版）】
-   =================================================== */
 
+/* ==========================================================================
+   【階段三：小遊戲圓形容器預設樣式】
+   ========================================================================== */
 #circleContainerWrapper {
-  width: min(80vw, 80vh) !important; /* 放大比例 */
-  max-width: 1000x !important;       /* 加大尺寸上限 */
+  width: min(80vw, 80vh) !important;
+  max-width: 1000px !important;
   max-height: 1000px !important;
-  aspect-ratio: 1 / 1 !important;    /* 確保 1:1 絕對正圓 */
+  aspect-ratio: 1 / 1 !important;
   margin: auto !important;
 }
 
-/* 手機橫向模式 (Landscape Mode) 自動縮放 */
-@media (max-height: 500px) and (orientation: landscape) {
-  #circleContainerWrapper {
-    width: min(70vw, 70vh) !important;
-    max-width: 360px !important;
-    max-height: 360px !important;
-  }
-}
-
-/* ===================================================
-   【結局畫面 (Phase 5) 齊左樣式】
-   =================================================== */
-
+/* ==========================================================================
+   【階段五：結局畫面預設通用樣式】
+   ========================================================================== */
 #endingTextContainer {
   width: 100% !important;
   max-width: 100% !important;
@@ -177,17 +173,19 @@ canvas {
   text-align: center !important;
 }
 
-#endingTextContainer p,
-#endingTextContainer .dialogue-text {
+div#endingTextContainer p, 
+#phaseEnding #endingTextContainer p,
+.jp-border-box #endingTextContainer p {
+  text-align: center !important;
+  color: #ffffff !important;
+  display: block !important;
   width: 100% !important;
-  max-width: 100% !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 0 !important;
-  text-align: left !important;
-  font-size: 0.8rem !important;
-  line-height: 1.0 !important;
-  font-weight: normal !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  line-height: 1.6 !important;
+  font-size: 0.95rem !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
   white-space: pre-wrap !important;
@@ -198,17 +196,16 @@ canvas {
   margin-left: 0 !important;
   padding-left: 0 !important;
   display: flex !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
 }
 
 .ending-link {
   font-family: 'DotGothic16', monospace;
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   font-weight: normal !important;
   display: inline-flex;
   align-items: center;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -227,12 +224,8 @@ canvas {
 }
 
 @keyframes slideRight {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
 }
 
 #chibiSprite {
@@ -240,106 +233,94 @@ canvas {
   image-rendering: crisp-edges;
 }
 
-/* ===================================================
-   【📱 手機橫向模式 (Landscape Mode) 專屬響應式修正】
-   =================================================== */
-@media (max-height: 500px) and (orientation: landscape) {
-  
-  /* 1. 放大圓形小遊戲容器，使其適應橫向高度並佔滿主要視覺 */
-  #circleContainerWrapper {
-    width: min(78vh, 78vw) !important;
+/* ==========================================================================
+   【📱 手機橫向模式 (Landscape Mode) 專屬最高優先權適配】
+   ========================================================================== */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+  /* 1. 小遊戲圓形放大 */
+  body #circleContainerWrapper {
+    width: min(76vh, 76vw) !important;
     max-width: 480px !important;
     max-height: 480px !important;
     margin-top: auto !important;
     margin-bottom: auto !important;
   }
 
-  /* 2. 讓小遊戲底部左右按鈕往上收，避免貼底被遮擋 */
-  #phaseMiniGame .flex.justify-between.items-center {
+  body #phaseMiniGame .flex.justify-between.items-center {
     padding: 0 16px !important;
-    margin-top: -10px !important;
-    margin-bottom: 5px !important;
-  }
-  
-  #btnTouchLeft, #btnTouchRight {
-    padding: 6px 14px !important;
-    font-size: 0.9rem !important;
+    margin-top: -8px !important;
+    margin-bottom: 4px !important;
   }
 
-  /* 3. 主線對話框與立繪調整 */
-  #dialogBox {
-    margin: 0 auto 0.4rem auto !important;
+  body #btnTouchLeft, 
+  body #btnTouchRight {
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* 2. 主線對話框與立繪放大 */
+  body #dialogBox {
+    margin: 0 auto 0.3rem auto !important;
     padding: 0.4rem 0.8rem !important;
   }
 
-  #dialogText, .dialogue-text {
+  body #dialogText, 
+  body .dialogue-text {
     font-size: 13px !important;
     line-height: 1.4 !important;
   }
 
-  #characterSpriteContainer {
+  body #characterSpriteContainer {
     height: 100% !important;
     max-height: 100vh !important;
   }
 
-  #characterSprite {
-    height: 125% !important;
+  body #characterSprite {
+    height: 130% !important; /* 橫向立繪放大 130% */
     width: auto !important;
     object-position: bottom center !important;
   }
 
-  /* 4. 階段五結局畫面：縮小行距與間距，防止最後一行掉出畫面 */
-  #phaseEnding {
+  /* 3. 階段五結局防溢出修復：極致壓縮縱向間距與字體 */
+  body #phaseEnding {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
-    padding-right: 1.rem !important;
+    padding-right: 1rem !important;
     justify-content: center !important;
   }
 
-  #phaseEnding .w-full.max-w-2xl {
-    gap: 1rem !important; /* 縮小Ｑ版角色與文字的間距 */
+  body #phaseEnding .w-full.max-w-2xl {
+    gap: 0.4rem !important; /* 大幅縮小 Q版圖案與文字間距 */
     margin-top: auto !important;
     margin-bottom: auto !important;
   }
 
-  #endingTextContainer {
+  body #chibiSprite {
+    max-height: 65px !important; /* 縮減 Q版大頭高度 */
+    width: auto !important;
+  }
+
+  body #endingTextContainer {
     min-height: auto !important;
   }
 
-  /* 強制縮小階段五橫向時的字體與行距，讓所有文字完整收在畫面內 */
-  div#endingTextContainer p, 
-  #phaseEnding #endingTextContainer p,
-  .jp-border-box #endingTextContainer p {
-    font-size: 11.5px !important;
-    margin-top: 4px !important;
-    margin-bottom: 4px !important;
-    line-height: 1.4 !important;
+  /* 強制覆蓋一般的 endingTextContainer p 設定 */
+  body div#endingTextContainer p, 
+  body #phaseEnding #endingTextContainer p,
+  body .jp-border-box #endingTextContainer p {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    margin-top: 2px !important;   /* 將原本 14px 的上下距壓縮到 2px */
+    margin-bottom: 2px !important;
   }
 
-  #chibiSprite {
-    max-height: 85px !important; /* 稍微縮小Ｑ版大頭，騰出空間給文字 */
-    width: auto !important;
+  body #endingActions {
+    margin-top: 0.2rem !important;
   }
-}
 
-
-div#endingTextContainer p, 
-#phaseEnding #endingTextContainer p,
-.jp-border-box #endingTextContainer p {
-  text-align: center !important;
-  color: #ffffff !important;
-  display: block !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 14px !important;
-  margin-bottom: 14px !important;
-  line-height: 1.0 !important;
-}
-
-
-#characterSprite {
-  filter: none !important;
-  -webkit-filter: none !important;
-  box-shadow: none !important;
-  drop-shadow: none !important;
+  body .ending-link {
+    font-size: 0.8rem !important;
+  }
 }
