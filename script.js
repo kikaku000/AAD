@@ -1,5 +1,5 @@
 /* ==========================================================================
-   【圖片資源設置】
+   圖片資源設置
    ========================================================================== */
 const ASSETS = {
   backgrounds: {
@@ -20,9 +20,9 @@ const ASSETS = {
   },
   player: "https://images.plurk.com/46EowJmJTngIV1nr967cOe.png ",
   pixelAnimals: [
-    "https://images.plurk.com/4YdjWh97UBstE9gFK74Wu4.png",
-    "https://images.plurk.com/1favROXJI5vJN7UcO2Be2N.png",
-    "https://images.plurk.com/1xnVBjDS22PA8X5jVSZhGM.png"
+    "https://images.plurk.com/42XlO1MktNBysySU4bXfA0.png",
+    "https://images.plurk.com/6jhAejp3CvDebSyXPvRF7D.png",
+    "https://images.plurk.com/1g6RCtPjEiY0UuwbvHTFJF.png"
     
   ]
 };
